@@ -1,31 +1,3 @@
-import environ
-import os
-
-# Initialize environment variables
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-
-# Set the project base directory (typically already defined)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Read the .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-# Use variables from .env
-DEBUG = env('DEBUG')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-    }
-}
-
 """
 Django settings for alx_travel_app project.
 
@@ -48,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d^q)7twe0x6jg70p^6$)oa$+6qe8=91w)gcyqu65tr4)f1i3!t'
+SECRET_KEY = 'django-insecure-75=$ppd%m*b&r%rgf894032k55(pxl2fl1e&_d@i-^&8=51%r&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -148,28 +120,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-INSTALLED_APPS = [
-    ...
-    'rest_framework',
-    'corsheaders',
-    'listings',
-    'drf_yasg',
-]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    ...
-]
-    'django.middleware.common.CommonMiddleware',
-]
-CORS_ALLOW_ALL_ORIGINS = True
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ],
-}
